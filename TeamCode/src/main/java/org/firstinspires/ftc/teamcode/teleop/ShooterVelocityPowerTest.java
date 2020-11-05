@@ -21,7 +21,7 @@ public class ShooterVelocityPowerTest extends LinearOpMode{
         time = new ElapsedTime();
         waitForStart();
         double powerIncrement;
-        powerIncrement = 1.0;
+        powerIncrement = 1.0  ;
 
         while(!isStopRequested()){
             /////////////////////////////////////////////////////////////////////
@@ -38,6 +38,14 @@ public class ShooterVelocityPowerTest extends LinearOpMode{
                 robot.flywheelTestMotor.shoot(powerIncrement - 0.05);
             }  else if(gamepad1.y){
                 robot.flywheelTestMotor.shoot(powerIncrement - 0.1);
+            } else if (gamepad1.dpad_down) {
+                robot.flywheelTestMotor.shoot( powerIncrement - 0.2 );
+            } else if (gamepad1.dpad_left) {
+                robot.flywheelTestMotor.shoot(powerIncrement-0.25);
+            } else if (gamepad1.dpad_up) {
+                robot.flywheelTestMotor.shoot(powerIncrement - 0.3);
+            } else if (gamepad1.dpad_right) {
+                robot.flywheelTestMotor.shoot(powerIncrement - 0.35);
             } else{
                 robot.flywheelTestMotor.shoot(0);
             }

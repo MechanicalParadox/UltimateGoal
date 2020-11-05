@@ -14,7 +14,7 @@ public class FlywheelTestMotor {
 // match with phone names, set power, and set with encoder
         flywheel = map.get(DcMotorEx.class, "FLY");
         flywheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        flywheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }
 
