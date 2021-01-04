@@ -13,6 +13,7 @@ public class MecanumDrive {
     LinearOpMode OpMode;
 
     public MecanumDrive(FullRobot robot, HardwareMap map, LinearOpMode OpMode){
+        //super(telemetry);
         this.OpMode = OpMode;
 // match with phone names
         frontR = map.get(DcMotorEx.class, "FR");
@@ -33,5 +34,36 @@ public class MecanumDrive {
         backL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
+    }
+
+//reset drivetrain encoders
+    public void reset() {
+        frontL.setPower(0);
+        frontR.setPower(0);
+        backL.setPower(0);
+        backR.setPower(0);
+
+        frontL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        frontR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        backR.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        frontL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        frontR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        backR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+    }
+
+//determine encoder changes
+    public double getRawLeftPosition() {
+        return frontR.getCurrentPosition();
+    }
+
+    public double getRawCenterPosition() {
+        return backR.getCurrentPosition();
+    }
+
+    public double getRawRightPosition() {
+        return -backL.getCurrentPosition();
     }
 }
